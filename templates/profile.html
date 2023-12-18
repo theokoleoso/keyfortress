@@ -1,0 +1,75 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+    <br><br><br><br>
+
+    <div class="contact-area">
+
+        <div class="container">
+            <div class="contact-area left-info info-items">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-4 contact-box left-info">
+                        <div>
+                            <div align="center">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <img src="{% static 'admin/img/admin.png' %}"
+                                             alt="avatar"
+                                             class="rounded-circle img-fluid" style="width: 150px;">
+                                        <h5 class="my-3">{{ request.user.username }}</h5>
+                                        <p class="text-muted mb-1">{{ request.user.email }}</p>
+                                        <div class="d-flex justify-content-center mb-2">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="pill"
+                                                       href="#about">Profile</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{% url 'pass_list' %}">My Password</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                        </div>
+                        <br><br>
+                    </div>
+                    <div class="col-lg-9 col-sm-8 col-md-9" align="left">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane card mb-4 active" id="about" style="line-height: 5em;">
+                                <div class="card-body">
+                                    <form method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {{ form.non_field_errors }}
+                                        <div class="form-group">
+                                            {{ form.email.label_tag }} {{ form.email }}
+                                            {{ form.email.errors }} <!-- Shows email errors -->
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.username.label_tag }}<a href="{% url 'password_change' %}">   Click Here Change Password</a>
+                                            {{ form.username }}
+                                            {{ form.username.errors }} <!-- Shows username errors -->
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <input type="submit" value="Save" class="btn btn-outline-success w-50"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tab-pane container fade" id="played">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

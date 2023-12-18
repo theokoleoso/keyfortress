@@ -1,0 +1,71 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="contact-area default-padding">
+        <div class="container">
+            <div class="contact-items">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 contact-box left-info">
+                        <div class="form-items info-items" align="center">
+                            <h2>Login</h2>
+                            <form method="POST" action="{% url 'account_login' %}" class="login contact-form">
+                                <!-- Prevent XSS attacks -->
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-lg-12 m-0 p-0">
+                                        {% if form.errors %}
+                                            {% for error in form.non_field_errors %}
+                                                <div class="alert alert-error">
+                                                    <!-- Prevent any HTML or JS displaying to user -->
+                                                    <strong>{{ error|escape }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input class="form-control" id="email" name="login" placeholder="Email address" autocomplete="email" type="email" required="">
+                                            {% if form.errors.email %}
+                                                    <div class="form-text">{{form.errors.email}}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input class="form-control" id="password" name="password" placeholder="Password" autocomplete="current-password" type="password" required>
+                                            {% if form.errors.password1 %}
+                                                    <div class="form-text">{{form.errors.password1}}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <!-- Redirect user to URL they were trying to access prior to logging in  -->
+                                            {% if redirect_field_value %}
+                                              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                            {% endif %}
+                                              <a class="button secondaryAction" href="{{ signup_url }}">Sign up</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <button type="submit" name="submit" id="submit">
+                                            Login
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

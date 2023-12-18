@@ -1,0 +1,93 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="contact-area default-padding">
+        <div class="container">
+            <div class="contact-items">
+                <div class="row">
+                    <div class="contact-box left-info">
+                        <div class="form-items info-items" align="center" style="min-height: 568px">
+                            <h2>Passwords for Websites</h2>
+                            <div class="row" style="padding: 15px; justify-content: flex-end;">
+                                <a href="{% url 'pass_create' %}" class="btn btn-outline-success right">Add New Password</a>
+                            </div>
+
+                            <table class="table table-striped" style="min-width: 780px">
+                                <thead>
+                                    <tr>
+                                        <th>Website Name</th>
+                                        <th>Website URL</th>
+                                        <th>Username</th>
+                                        <th>Password</th>
+                                        <th>Created At</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for pass in pass_list %}
+                                        <tr>
+                                            <td>{{ pass.website_name }}</td>
+                                            <td><a href="{{ pass.website_url }}">{{ pass.website_url }}</a></td>
+                                            <td>{{ pass.username }}</td>
+                                            <td>
+                                                <div style="display: flex; align-items: center;">
+                                                    <input type="password"
+                                                           name="password"
+                                                           id="password{{ forloop.counter }}"
+                                                           class="form-control"
+                                                           value="{{ pass.password }}"
+                                                           readonly>
+                                                    <i id="eye{{ forloop.counter }}" class="fa fa-eye-slash"
+                                                       onclick="togglePassword({{ forloop.counter }})"></i>
+                                                </div>
+                                            </td>
+                                            <td>{{ pass.created_at }}</td>
+                                            <td>
+                                                <a href="{% url 'pass_delete' pass.pk %}" class="btn btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script>
+        function togglePassword(counter) {
+            var eye = document.getElementById("eye" + counter);
+            var password = document.getElementById("password" + counter);
+            
+            if (password.type === "password") {
+                password.type = "text";
+                fetch("/decrypt/" + "?password=" + password.value)
+                    .then(response => response.json())
+                    .then(data => {
+                        password.value = data.decrypted_password;
+                        eye.classList.remove("fa-eye-slash");
+                        eye.classList.add("fa-eye");
+                    });
+            } else {
+                password.type = "password";
+                eye.classList.remove("fa-eye");
+                eye.classList.add("fa-eye-slash");
+            }
+        }
+    </script>
+
+    <style>
+        .fa-eye, .fa-eye-slash {
+            cursor: pointer;
+        }
+        
+        td {
+            line-height: 3em;
+        }
+    </style>
+{% endblock %}

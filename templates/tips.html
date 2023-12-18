@@ -1,0 +1,73 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="custom-security-area custom-padding">
+    <div class="custom-container">
+        <div class="custom-security-items">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="custom-security-section">
+                        <h1>Enhance Your Digital Safety</h1>
+                        <p>A recent 2023 tech report emphasizes the importance of robust digital security practices in the ever-evolving online landscape.</p>
+                        <h4 class="security-tip">Craft Unique Passcodes</h4>
+                        <p>Steer clear of easily guessable passwords. Strengthen your security by creating intricate and unique passcodes.</p>
+                        <h4 class="security-tip">Update Passwords Post-Incident</h4>
+                        <p>If a password has been compromised, take swift action by changing it immediately to mitigate potential risks.</p>
+                        <h4 class="security-tip">Ditch Password Recurrence</h4>
+                        <p>Avoid using the same password across different accounts to prevent widespread vulnerability in case of a breach.</p>
+                        <h4 class="security-tip">Forge Intricate Passwords</h4>
+                        <p>Ensure your passwords exceed 8 characters and encompass a mix of uppercase, lowercase, digits, and symbols.</p>
+                        <h4 class="security-tip">Leverage a Password Manager</h4>
+                        <p>Simplify password upkeep by employing a trustworthy password manager to securely store and organize your credentials.</p>
+                        <h4 class="security-tip">Embrace Two-Factor Authentication (2FA)</h4>
+                        <p>Elevate your security with 2FA, introducing an additional layer of verification through your mobile device.</p>
+                        <h4 class="security-tip">Abandon Physical Password Notes</h4>
+                        <p>Refuse the temptation to jot down passwords on paper or save them in unencrypted files. Preserve the integrity of your accounts.</p>
+                        <h4 class="security-tip">Stay Alert to Phishing</h4>
+                        <p>Remain vigilant against phishing schemes. Exercise caution with suspicious links and be wary of deceptive emails.</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                    <img src="{% static 'admin/img/keyft.png' %}" alt="Security Tips" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Us Section -->
+<div class="contact-us-separator"></div>
+<div class="contact-us-area custom-padding">
+    <div class="custom-container">
+        <div class="contact-us-items">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <div class="contact-us-section">
+                        <h2>Contact Us</h2>
+                        <p>If you have any questions, concerns, or need further assistance, feel free to reach out to our support team. We are here to help!</p>
+                        <ul>
+                            <li>Email: <a href="mailto:support@example.com">support@example.com</a></li>
+                            <li>Phone: +1 (123) 456-7890</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .security-tip {
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+    <div class="contact-area default-padding">
+        <div class="container">
+            <div class="contact-items">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 contact-box left-info">
+                        <div class="form-items info-items" align="center">
+                            <h1>Delete Password</h1>
+                            <p>Are you sure you want to delete the password for {{ object.website_name }}?</p>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Yes, delete it</button>
+                                <a href="{% url 'pass_list' %}" class="btn btn-secondary">No, go back</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="about-section default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="about-content">
+                        <h2>Welcome to KeyFortress</h2>
+                        <p>
+                            At KeyFortress, we are passionate about making your online experience secure and
+                            convenient. Our mission is to simplify password management and enhance your digital
+                            security.
+                        </p>
+                        <p>
+                            Say goodbye to the hassle of remembering multiple complex passwords. KeyFortress is here
+                            to provide a secure and user-friendly solution to keep your credentials safe.
+                        </p>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <div class="about-img">
+                            <img src="{% static 'admin/img/padlock.png' %}" alt="Padlock Image">
+    
+                        </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-section default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure Password Storage</h3>
+                        <p>KeyFortress provides a highly secure vault to store all your credentials, ensuring your
+                            sensitive information is protected.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="feature-item">
+                        <i class="fas fa-cloud-download-alt"></i>
+                        <h3>Effortless Export</h3>
+                        <p>Export your passwords easily in CSV format, offering a convenient way to backup and manage
+                            your vault data.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="feature-item">
+                        <i class="fas fa-edit"></i>
+                        <h3>Flexible Editing</h3>
+                        <p>Edit your passwords at any time, providing you with the flexibility to update your
+                            credentials as needed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
